@@ -1,33 +1,20 @@
+import java.io.*;
+
 public class Main {
-    public static void main(String[] args) {
-        boolean result = true;
-        Animals chicken = new Animals("Курица");
-        Animals egg = new Animals("Яйцо");
-        egg.start();
-        chicken.start();
-        try{
-        egg.join();
-        if (chicken.isAlive()) {
-            System.out.println("Победила курица!");
-        } else {
-            System.out.println("Победило яйцо!");
+    public static void main(String[] args) throws IOException {
+        String line;
+        String readText = "";
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("inputText.txt")));
+        while ((line = br.readLine()) != null) {
+                readText += line;
         }
-    }
-        catch (Exception ex){
-
-        }
-    }
-}
-class Animals extends Thread{
-    String animalName;
-
-    Animals(String name){
-        animalName = name;
-    }
-
-    public void run(){
-        for(int i = 0; i < 5; i++) {
-            System.out.println(animalName);
-        }
+        String symbols = "Всего символов в тексте " + readText.length();
+        String space = "Всего символов в тексте без пробелов " + readText.replaceAll(" ", "").length();
+        String words = "Всего слов в тексте " + readText.split(" ").length;
+        System.out.println(symbols + "\n" + space + "\n" + words + "\n");
+        FileWriter fileWriter = new FileWriter("outputText.txt");
+        fileWriter.write(symbols);
+        fileWriter.write(space);
+        fileWriter.write(words);
     }
 }
