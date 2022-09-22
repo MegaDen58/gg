@@ -1,10 +1,15 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(System.in);
         String line;
         String readText = "";
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("inputText.txt")));
+        System.out.print("Введите путь к файлу: ");
+        String path = in.nextLine();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
         while ((line = br.readLine()) != null) {
                 readText += line;
         }
