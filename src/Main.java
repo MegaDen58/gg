@@ -13,8 +13,9 @@ public class Main {
         String words = "Всего слов в тексте " + readText.split(" ").length;
         System.out.println(symbols + "\n" + space + "\n" + words + "\n");
         FileWriter fileWriter = new FileWriter("outputText.txt");
-        fileWriter.write(symbols);
-        fileWriter.write(space);
-        fileWriter.write(words);
+        fileWriter.write(symbols + "\n");
+        fileWriter.write(space + "\n");
+        fileWriter.write(words + "\n");
+        fileWriter.flush();
     }
 }
